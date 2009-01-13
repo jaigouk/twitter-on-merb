@@ -51,8 +51,8 @@ dependency 'shorturl'
 require 'memcache'
 #require 'ferret'
 Merb::BootLoader.before_app_loads do
-#   Merb::Slices.config[:fiveruns_tuneup_merb][:api_key] = 'd4dbf40cbeea651ce4eafcf02fcf3f027abe07f3'
-
+  dev_gems = Dir.glob("#{Merb.root}/gems/development/**/lib/*.rb")
+  dev_gems.each { |dev_gem| require dev_gem }
 end
 
 Merb::BootLoader.after_app_loads do
