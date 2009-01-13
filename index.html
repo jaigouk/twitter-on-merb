@@ -97,7 +97,7 @@ h4#nav {
 }
 h4 a {
 	color:#fff;
-	text-decoration:underline;
+	text-decoration:none;
 }
 
 h4 a:hover {
@@ -105,40 +105,6 @@ h4 a:hover {
 	text-decoration:none;
 }
 
-div#rss_feeds {
-	background-color:#fff;
-		color:#000;
-			padding-left: 3px;
-	padding-right: 3px;
-	padding-bottom: 3px;
-}
-
-div#rss_feeds b{
-	background-color:#000000;
-			color:#fff;
-	padding-left: 3px;
-	padding-right: 3px;
-	padding-bottom: 1px;
-	font-style:normal;
-}
-
-div#rss_feeds ul{
-	list-style: none;
-	margin-left: 0;
-	padding-left: 1em;
-	text-indent: -1em;
-	
-
-	}
-	
-div#rss_feeds ul li:before {
-	content: "\00BB \0020";
-	}
-div#rss_feeds ul li {
-  padding-top: 3px;
-	padding-bottom: 3px;
-	margin-bottom:  5px;
-	}
 /*	#3E4415  khaki color*/
 /*	#99CC33 green color*/
 /*	#829D5E  light khaki color*/
@@ -146,66 +112,24 @@ div#rss_feeds ul li {
 /* #352726 dark chocolate */
 /* #363942 blueish-grey */
 
-	div#rss_feeds ul li b#edgemerb {
-	background-color:#3E4415;
-	padding-left: 3px;
-	padding-right: 3px;
-	padding-bottom: 1px;
-	font-style:normal;
-	}
-
-	div#rss_feeds ul li b#negotiation {
-	background-color:#363942 ;
-	padding-left: 3px;
-	padding-right: 3px;
-	padding-bottom: 1px;
-	font-style:normal;
-	}
-div#rss_feeds ul li font{
-  padding-top: 7px;
-	font-family:Georgia, "Times New Roman", Times, serif;
-	color: #A6A6A6;
-	font-size:10pt;
-	font-style:italic;
-	font-weight:normal;
-	}
 	
-div#rss_feeds ul li a {
-	color:#000000;
-	text-decoration:underline;
-}
+	    #container {
+      margin: 0 auto;
+      width: 700px;
+    }
 
-div#rss_feeds ul li a:hover {
-	color:#000000;
-	text-decoration:none;
-}
+    a { color: #b7e6f4; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+    pre { background: #000; color: #fff; padding: 15px;}
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 	
-	
-	
-div#twitter_div {
-background: transparent url(/images/balloon2.png) no-repeat ; 
-position: absolute; left: 410px; top: 170px;
-z-index: 1;
-/*float: right; */
-width: 500px; 
-height: 404px; 
-padding-left: 90px; 
-padding-top: 90px;
-}
-div#twit {
-width: 400px; 
-height:404px; 
-}
-div#twitter_div ul {
-	list-style: none;
-
-}
-div#twitter_div ul li {
-	color:#000000;
-	font-size:15pt;
-	margin-bottom: 10px;
-
-}
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+    pre { background: #000; color: #fff; padding: 15px;}
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { text-align:center; padding-top:30px; font-style: italic; }
+    
 	</style>
 	
 </head>
@@ -222,49 +146,51 @@ div#twitter_div ul li {
         <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
     </div>
       
-    <h1><a href="http://github.com/jaigouk/twitter-on-merb">twitter-on-merb</a> 
-      <span class="small">by <a href="http://github.com/jaigouk">jaigouk</a></small></h1>
+    <h2><a href="http://github.com/jaigouk/twitter-on-merb">twitter-on-merb</a> 
+      <span class="small">by <a href="http://github.com/jaigouk">jaigouk</a></small></h2>
 
     <div class="description">
       aggregate edge merb commit rss feeds and send them to twitter @edgemerb.
     </div>
 
     <p>http://merb.kicks-ass.org
-
-This is a merb flat app that gather feeds from edge merb commits and 
+<br/>
+This is a merb flat app that gather feeds from edge merb commits and <br/>
 push the messages to twitter.com/edgemerb. 
-
-=========
+<br/>
+=========<br/>
 Motivation
-
+<br/>
 Hi. My name is Jai-Gouk Kim, a newbie in merb community. I'm not a ruby guru. I started digging into merb recently and found out awesomeness of merb. I bought "Merb in Action" but there was no notice about further works and It's really hard to get informations about changes like between 1.0.7 and 1.0.7.1. Since I don't have experiences related with merb, I wanted explanations about them. Katz's blog posts are good but I need more than that. So I parsed rss feeds here.
-
+<br/>
 Thanks to merb core team, rubypond, scrubber, jchris, monki, and FoobarWidget. Ruby community is cool! They really helped me to build this small app.
+<br/>
+2009.1.7<br/>
+by Jai-Gouk, Kim </p>
 
-2009.1.7
-by Jai-Gouk, Kim </p><h2>Dependencies</h2>
-<p>gem('twitter4r', '0.3.0')
-require 'twitter'
-require 'time'
-require 'open-uri'
-dependency 'nokogiri'
-dependency 'shorturl'
+<h2>Dependencies</h2>
+<p>gem('twitter4r', '0.3.0')<br/>
+require 'twitter'<br/>
+require 'time'<br/>
+require 'open-uri'<br/>
+dependency 'nokogiri'<br/>
+dependency 'shorturl'<br/>
 require 'memcache'</p>
 <h2>License</h2>
 <p>The MIT License
-
-Copyright (c) 2009 Jai-Gouk Kim
-
+<br/>
+Copyright (c) 2009 Jai-Gouk Kim<br/>
+<br/>
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
+<br/>
 The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
+all copies or substantial portions of the Software.<br/>
+<br/>
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
