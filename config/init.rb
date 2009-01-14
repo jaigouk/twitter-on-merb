@@ -21,7 +21,7 @@ dependency "dm-validations", dm_gems_version
 dependency "do_mysql", do_gems_version
 dependency "do_sqlite3", do_gems_version
 
-
+dependency "merb_daemon"
 
 #dependency "dm-is-searchable", dm_gems_version 
 
