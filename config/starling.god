@@ -5,7 +5,7 @@ God.watch do |w|
   # I do NOT specify the -d parameter which daemonizes beanstalkd.
   # I do this so God can make it a daemon for me!
   w.start = "starling -P tmp/pids/starling.pid -q tmp/starling"
- 
+
   w.start_if do |start|
     start.condition(:process_running) do |p|
       p.interval = 5.seconds
@@ -14,8 +14,8 @@ God.watch do |w|
   end
   
   w.restart_if do |restart|
-    restart.condition(:momory_usage) do |c|
-      c.above = 3.megabyes
+    restart.condition(:memory_usage) do |c|
+      c.above = 3.megabytes
     end
   end
 
