@@ -143,9 +143,15 @@ div#rss_feeds ul li {
 	padding-bottom: 1px;
 	font-style:normal;
 	}
-
-	div#rss_feeds ul li b#negotiation {
-	background-color:#363942 ;
+	div#rss_feeds ul li b#katz_blog {
+	background-color:#363942;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-bottom: 1px;
+	font-style:normal;
+	}
+	div#rss_feeds ul li b#wycats_rails {
+	background-color:#D02B55 ;
 	padding-left: 3px;
 	padding-right: 3px;
 	padding-bottom: 1px;

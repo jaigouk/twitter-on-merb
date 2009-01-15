@@ -26,11 +26,11 @@ class Tweet
   def self.scrape
 
     merb = 'http://github.com/wycats/merb/commits/1.0.x'
-    negotiation = 'http://github.com/wycats/rails/commits/content_negotiation'
+    negotiation = 'http://github.com/wycats/rails/commits/master'
     blog= 'http://yehudakatz.com'
 
     self.get_commits_and_bark(merb, "edgemerb")
-    self.get_commits_and_bark(negotiation, "negotiation")
+    self.get_commits_and_bark(negotiation, "wycats_rails")
     self.get_blog_and_bark(blog)
   end    
     
@@ -61,7 +61,7 @@ class Tweet
       temp <<{:message => @message, :name => @name, :date => @new_date, :link => @new_link, :category => category}           
     end  
       temp.slice!(4, temp.length) 
-      temp.each do |data|
+      temp.sort_by{|a| a[:date]}.each do |data|
        self.save_this(data)
       end
   end
@@ -92,7 +92,9 @@ class Tweet
         temp<<{:message => @title, :name => @name, :date=> @new_date, :category => "Katz's blog", :link => @new_link}
       end
       temp.slice!(4, temp.length) 
-      temp.each do |data|
+
+
+      temp.sort_by{|a| a[:date]}.each do |data|
        self.save_this(data)
       end
   end

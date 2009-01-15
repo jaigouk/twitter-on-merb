@@ -8,7 +8,7 @@ namespace :chores do
     end
   end
 
-  desc "Scrapes on every hour"
+  desc "every hour"
   task :hourly =>  :merb_env   do
     chore("Hourly") do
       # Your Code Here
@@ -22,7 +22,7 @@ namespace :chores do
       FileUtils.rm_rf(Merb.root / 'public' / 'page_cache')
     end
   end
-  desc "Scrapes on every week"
+  desc "every week"
   task :weekly  =>  :merb_env do
     chore("Weekly") do
       # Your Code Here

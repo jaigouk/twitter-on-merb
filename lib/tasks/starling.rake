@@ -4,6 +4,7 @@ config_file = File.join(Merb.root,  'config', 'twitter.yml')
 namespace :starling do
   desc "consume twitter messages to send"
   task :consume do
+  
     require 'memcache'
     gem('twitter4r', '0.3.0')
     require 'twitter'

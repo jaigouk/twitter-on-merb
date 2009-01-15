@@ -21,7 +21,8 @@ dependency "dm-validations", dm_gems_version
 dependency "do_mysql", do_gems_version
 dependency "do_sqlite3", do_gems_version
 
-dependency "merb_daemon"
+dependency "daemons"
+#dependency "merb_daemon"
 
 #dependency "dm-is-searchable", dm_gems_version 
 
@@ -49,15 +50,17 @@ require 'open-uri'
 dependency 'nokogiri'
 dependency 'shorturl'
 require 'memcache'
-#require 'ferret'
+
 Merb::BootLoader.before_app_loads do
-  dev_gems = Dir.glob("#{Merb.root}/gems/development/**/lib/*.rb")
-  dev_gems.each { |dev_gem| require dev_gem }
+#  dev_gems = Dir.glob("#{Merb.root}/gems/development/**/lib/*.rb")
+#  dev_gems.each { |dev_gem| require dev_gem }
+
 end
 
 Merb::BootLoader.after_app_loads do
-  STARLING = MemCache.new('127.0.0.1:22122')
-
+  if  STARLING = MemCache.new('127.0.0.1:22122') then
+  puts 'starling loaded'
+  end
 end
 
 
