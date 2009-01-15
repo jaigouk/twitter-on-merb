@@ -1,12 +1,13 @@
-Twitter-on-Merb
+h1. Twitter-on-Merb
 ==============
 http://merb.kicks-ass.org
+
+h1. Description
 
 This is a merb flat app that gather feeds from edge merb commits and 
 push the messages to twitter.com/edgemerb. 
 
-=========
-Motivation
+h1. Motivation
 
 Hi. My name is Jai-Gouk Kim, a newbie in merb community. I'm not a ruby guru. I started digging into merb recently and found out awesomeness of merb. I bought "Merb in Action" but there was no notice about further works and It's really hard to get informations about changes like between 1.0.7 and 1.0.7.1. Since I don't have experiences related with merb, I wanted explanations about them. Katz's blog posts are good but I need more than that. So I parsed rss feeds here.
 
@@ -14,3 +15,25 @@ Thanks to merb core team, rubypond, scrubber, jchris, monki, and FoobarWidget. R
 
 2009.1.7
 by Jai-Gouk, Kim 
+
+h1. LICENSE
+Copyright (c) 2009 Jai-Gouk Kim (jaigouk AT gmail DOT com)
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

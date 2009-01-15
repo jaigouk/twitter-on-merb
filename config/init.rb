@@ -21,7 +21,8 @@ dependency "dm-validations", dm_gems_version
 dependency "do_mysql", do_gems_version
 dependency "do_sqlite3", do_gems_version
 
-dependency "daemons"
+#dependency "daemons"
+dependency "daemon_controller"
 #dependency "merb_daemon"
 
 #dependency "dm-is-searchable", dm_gems_version 
@@ -58,8 +59,10 @@ Merb::BootLoader.before_app_loads do
 end
 
 Merb::BootLoader.after_app_loads do
+  require Merb.root + 'config/daemon_controller.rb'
+  
   if  STARLING = MemCache.new('127.0.0.1:22122') then
-  puts 'starling loaded'
+    puts 'starling loaded'
   end
 end
 
