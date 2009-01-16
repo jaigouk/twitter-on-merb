@@ -1,7 +1,9 @@
 h1. Twitter-on-Merb
 
-http://merb.kicks-ass.org
-
+*site: merb.kicks-ass.org
+*server: slicehost Ubuntu 8.1, apache-passenger, merb version 1.0.7.1, dm version 0.9.9
+*tatus: working on god monitoring codes.
+*todo: eager cache, monitoring daemons
 h1. Description
 
 This is a merb flat app that gather feeds from edge merb commits and 
@@ -16,7 +18,7 @@ Thanks to merb core team, rubypond, scrubber, jchris, monki, and FoobarWidget. R
 2009.1.7
 by Jai-Gouk, Kim 
 
-h1. LICENSE
+h1. MIT LICENSE
 
 Copyright (c) 2009 Jai-Gouk Kim (jaigouk AT gmail DOT com)
 
