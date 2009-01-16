@@ -61,10 +61,11 @@ end
 Merb::BootLoader.after_app_loads do
 
   
-  if  STARLING = MemCache.new('127.0.0.1:22122') then
+#  if  STARLING = MemCache.new('127.0.0.1:22122') then
+  STARLING = MemCache.new('127.0.0.1:22122') 
 #      require Merb.root + '/config/daemon_controller.rb'
-    puts 'starling loaded'
-  end
+#    puts 'starling loaded'
+#  end
 
 end
 
