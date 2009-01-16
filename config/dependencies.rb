@@ -1,7 +1,3 @@
-use_orm :datamapper
-use_test :rspec
-use_template_engine :erb
-
 merb_gems_version = "1.0.7.1"
 dm_gems_version   = "0.9.9"
 do_gems_version =  "0.9.10.1"
@@ -43,37 +39,3 @@ require 'twitter'
 require 'time'
 require 'open-uri'
 require 'memcache'
-
-Merb::BootLoader.before_app_loads do
-end
-
-Merb::BootLoader.after_app_loads do
-
-  STARLING = MemCache.new('127.0.0.1:22122') 
-end
-
-
-Merb::Router.prepare do
-  match('/').to(:controller => "twitter_on_merb", :action =>'index')
-  match('/about').to(:controller => "twitter_on_merb", :action =>'about')
-  match('/commits').to(:controller => "twitter_on_merb", :action =>'commits')
-  default_routes
-end
-
-
-Merb::Config.use { |c|
-  c[:environment]         = 'production',
-  c[:framework]           = {},
-  c[:log_level]           = :debug,
-  c[:log_stream]          = STDOUT,
-  # or use file for logging:
-  # c[:log_file]          = Merb.root / "log" / "merb.log",
-  c[:use_mutex]           = false,
-  c[:session_store]       = 'cookie',
-  c[:session_id_key]      = '_twitter_on_merb_session_id',
-  c[:session_secret_key]  = '6f61c1a0968b761a4535f82d9da4619dc2ad461e'
-  c[:exception_details]   = true,
-  c[:reload_classes]      = true,
-  c[:reload_templates]    = true,
-  c[:reload_time]         = 0.5
-}

@@ -6,3 +6,5 @@ cache/fragments/*
 config/deploy.rb
 config/*.yml
 lib/nokogiri_practice.rb
+*.lock
+*.output
