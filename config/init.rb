@@ -81,10 +81,18 @@ end
 
 # I copied environments folder from normal app into config folder
 Merb::Config.use { |c|
-
+  c[:environment]         = 'production',
+  c[:framework]           = {},
+  c[:log_level]           = :debug,
+  c[:log_stream]          = STDOUT,
+  # or use file for logging:
+  # c[:log_file]          = Merb.root / "log" / "merb.log",
   c[:use_mutex]           = false,
   c[:session_store]       = 'cookie',
   c[:session_id_key]      = '_twitter_on_merb_session_id',
   c[:session_secret_key]  = '6f61c1a0968b761a4535f82d9da4619dc2ad461e'
-
+  c[:exception_details]   = true,
+  c[:reload_classes]      = true,
+  c[:reload_templates]    = true,
+  c[:reload_time]         = 0.5
 }
