@@ -1,9 +1,10 @@
 h1. Twitter-on-Merb
 
-*site: merb.kicks-ass.org
-*server: slicehost Ubuntu 8.1, apache-passenger, merb version 1.0.7.1, dm version 0.9.9
-*tatus: working on god monitoring codes.
-*todo: eager cache, monitoring daemons
+* site: merb.kicks-ass.org
+* server: slicehost Ubuntu 8.1, apache-passenger, merb version 1.0.7.1, dm version 0.9.9
+* status: working on god monitoring codes.
+* todo: eager cache, monitoring daemons
+
 h1. Description
 
 This is a merb flat app that gather feeds from edge merb commits and 
