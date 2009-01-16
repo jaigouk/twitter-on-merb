@@ -1,5 +1,5 @@
 h1. Twitter-on-Merb
-==============
+
 http://merb.kicks-ass.org
 
 h1. Description
@@ -17,6 +17,7 @@ Thanks to merb core team, rubypond, scrubber, jchris, monki, and FoobarWidget. R
 by Jai-Gouk, Kim 
 
 h1. LICENSE
+
 Copyright (c) 2009 Jai-Gouk Kim (jaigouk AT gmail DOT com)
 
 Permission is hereby granted, free of charge, to any person obtaining
