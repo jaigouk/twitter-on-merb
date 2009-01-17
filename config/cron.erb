@@ -1,7 +1,0 @@
-*/30 * * * * MERB_ENV='production' rake -f <%= current_path %>/Rakefile chores:evenry30minutes  >> <%= deploy_to %>/shared/log/cron/evenry30minutes.txt
-
-00 * * * * MERB_ENV='production' rake -f <%= current_path %>/Rakefile chores:hourly >> <%= deploy_to %>/shared/log/cron/hourly.txt
-
-01 0 * * * MERB_ENV='production' rake -f <%= current_path %>/Rakefile chores:daily >> <%= deploy_to %>/shared/log/cron/daily.txt
-
-02 0 * * 1 MERB_ENV='production' rake -f <%= current_path %>/Rakefile chores:weekly >> <%= deploy_to %>/shared/log/cron/weekly.txt
