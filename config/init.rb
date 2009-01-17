@@ -50,7 +50,7 @@ end
 
 Merb::BootLoader.after_app_loads do
   STARLING = MemCache.new('127.0.0.1:22122') 
-  SCHEDULER = Rufus::Scheduler.start_new
+  
 end
 
 
