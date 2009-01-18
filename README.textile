@@ -12,11 +12,11 @@ push the messages to twitter.com/edgemerb.
 
 h1. Motivation
 
-Hi. My name is Jai-Gouk Kim, a newbie in merb community. I'm not a ruby guru. I started digging into merb recently and found out awesomeness of merb. I bought "Merb in Action" but there was no notice about further works and It's really hard to get informations about changes like between 1.0.7 and 1.0.7.1. Since I don't have experiences related with merb, I wanted explanations about them. Katz's blog posts are good but I need more than that. So I parsed rss feeds here.
+Hi. My name is Jai-Gouk Kim, a newbie in merb community. I'm not a ruby guru. I started digging into merb recently and found out awesomeness of merb. I bought "Merb in Action" but there was no notice about further works and It's really hard to get informations about changes like between 1.0.7 and 1.0.7.1. Since I don't have experiences related with merb, I wanted explanations about them. Katz's blog posts are good but I need more than that. So I parsed rss feeds here.  I know my codes are not beutiful. I just hope this codes help someone who just started merb. I will follow the edge version of merb, and make sure this small app works so that this example app is useful as it is.
 
-Thanks to merb core team, rubypond, scrubber, jchris, monki, and FoobarWidget. Ruby community is cool! They really helped me to build this small app.
+Thanks to merb core team, rubypond, giom, monki, and FoobarWidget. Ruby community is cool! They really helped me to build this small app.
 
-2009.1.7
+2009.1.18
 by Jai-Gouk, Kim 
 
 h1. MIT LICENSE
