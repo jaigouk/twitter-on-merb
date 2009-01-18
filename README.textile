@@ -1,7 +1,7 @@
 h1. Twitter-on-Merb
 
 * site: merb.kicks-ass.org
-* server: slicehost Ubuntu 8.1, apache-passenger, merb version 1.0.7.1, dm version 0.9.9
+* server: slicehost Ubuntu 8.1, apache-passenger, merb version 1.0.8, dm version 0.9.9
 * status: working on eager cache
 * todo: eager cache
 
