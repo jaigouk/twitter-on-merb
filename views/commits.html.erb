@@ -18,7 +18,7 @@
   <div id="rss_feeds">
 
     <ul>
-<%- fetch_partial 'recent_commits', :updated_at=> (Tweet.recent.date rescue nil) %>
+<%- fetch_partial 'recent_commits', :updated_at=> (Tweet.recent.created_at rescue nil) %>
     </ul>
   </div>
   <p>&nbsp;</p>
