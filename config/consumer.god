@@ -39,7 +39,7 @@ God.watch do |w|
    w.group = 'twitter'
   # I do NOT specify the -d parameter which daemonizes beanstalkd.
   # I do this so God can make it a daemon for me!
-  w.start = "/usr/bin/starling -d -P #{MERB_ROOT}/log/starling.pid -q #{MERB_ROOT}/log/"
+  w.start = "starling -d -P #{MERB_ROOT}/log/starling.pid -q #{MERB_ROOT}/log/"
   w.stop =  "kill `cat #{MERB_ROOT}/log/starling.pid`"
   w.pid_file = "#{MERB_ROOT}/log/starling.pid"
   w.behavior(:clean_pid_file)
