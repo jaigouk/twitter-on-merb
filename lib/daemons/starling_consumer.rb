@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 require 'rubygems'
-require 'merb'
-require File.join( File.dirname(__FILE__) + '/../../', 'config', 'dependencies.rb')
- 
+#require 'merb'
+#require File.join( File.dirname(__FILE__) + '/../../', 'config', 'dependencies.rb')
+# 
  
 $running = true
 Signal.trap("TERM") do
