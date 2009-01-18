@@ -43,7 +43,7 @@ God.watch do |w|
   w.stop =  "kill `cat #{MERB_ROOT}/log/starling.pid`"
   w.pid_file = "#{MERB_ROOT}/log/starling.pid"
   w.behavior(:clean_pid_file)
-  generic_monitoring(w, :cpu_limit => 60.percent, :memory_limit => 30.megabytes)
+  generic_monitoring(w, :cpu_limit => 60.percent, :memory_limit => 60.megabytes)
 end
 
 God.watch do |w|
@@ -59,5 +59,5 @@ God.watch do |w|
   w.pid_file = "#{MERB_ROOT}/log/consumer.pid"
   
   w.behavior(:clean_pid_file)
-  generic_monitoring(w, :cpu_limit => 30.percent, :memory_limit => 20.megabytes)
+  generic_monitoring(w, :cpu_limit => 60.percent, :memory_limit => 60.megabytes)
 end
