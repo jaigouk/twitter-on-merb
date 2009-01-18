@@ -51,8 +51,14 @@ end
 Merb::BootLoader.after_app_loads do
   STARLING = MemCache.new('127.0.0.1:22122') 
   scheduler = Rufus::Scheduler.start_new
-  scheduler.every "10m" do
+  
+  scheduler.every "15m" do
     TwitterOnMerb.scrape
+  end
+  scheduler.every "30m" do
+    FileUtils.rm_rf(Merb.root / :cache / :actions)
+    FileUtils.rm_rf(Merb.root / :cache / :fragments)
+    FileUtils.rm_rf(Merb.root / 'public' / 'page_cache')
   end
 end
 

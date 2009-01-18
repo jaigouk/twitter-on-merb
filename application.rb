@@ -1,5 +1,5 @@
 class TwitterOnMerb < Merb::Controller
-  eager_cache(:save_this, [TwitterOnMerb, :commits], :store => :action_store) { build_request(build_url(:commits)) }
+
   cache :commits, :about
   def _template_location(action, type = nil, controller = controller_name)
     controller == "layout" ? "layout.#{action}.#{type}" : "#{action}.#{type}"
