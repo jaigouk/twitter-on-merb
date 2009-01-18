@@ -156,35 +156,4 @@ $ irb
 > require 'rubygems'
 > require 'memcached'
 
-Before I implemet merb-cache, I think my code is ugly in a way. commit method in application.rb is too heavy to render. Scraping and saving the results have to be in another method and it needs to be running periodically. So I pulled "Advanced Rails Recipes" out. There is a usefu article written by David Beck.
-
-# +---------------- minute (0 - 59)
-# |  +------------- hour (0 - 23)
-# |  |  +---------- day of month (1 - 31)
-# |  |  |  +------- month (1 - 12)
-# |  |  |  |  +---- day of week (0 - 6) (Sunday=0 or 7)
-# |  |  |  |  |
-  *  *  *  *  *  command to be executed
-
-To get crontab to run a task every 10 minutes you could type as follow
-*/10 * * * * /path/to/command
-To get crontab to run a task every 2 minutes you could type as follow
-*/2 * * * *
-
-and I had to create sqlite3 db manually. dunno why.
-$rake db:create MERB_ENV='production'
-$rake db:automigrate MERB_ENV='production'
-
-I gave up with sqlite3. switched to mysql
-I still have to run automigrate. :(
-
-scp -r config/database.yml deploy@67.207.135.70:/home/deploy/repos/merb.kicks-ass.org/shared/database.yml
-
-http://wiki.joyent.com/accelerators:kb:rails:cron
-http://devblog.michaelgalero.com/2008/11/03/custom-rake-tasks-in-merb-data-import/
-
-everythins ok except for slow cron job. 
-search db before attempt to save the data.
-added unique validation in the model.
-
-
+To manage daemons, I installed rufus-scheduler and daemons gem. 

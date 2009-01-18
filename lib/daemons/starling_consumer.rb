@@ -1,9 +1,7 @@
-# http://github.com/jaigouk/twitter-on-merb
- 
 #!/usr/bin/env ruby
 require 'rubygems'
 require 'merb'
-require   File.dirname(__FILE__) + '/../../config/dependencies.rb'
+require File.join( File.dirname(__FILE__) + '/../../', 'config', 'dependencies.rb')
  
  
 $running = true

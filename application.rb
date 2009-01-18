@@ -123,8 +123,5 @@ class TwitterOnMerb < Merb::Controller
      STARLING.set('twitter_post', {:send => @poster})
   end
   
-  def self.clear_cache
-  
-  end
 end
 

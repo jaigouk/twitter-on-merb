@@ -2,7 +2,7 @@ use_orm :datamapper
 use_test :rspec
 use_template_engine :erb
 
-merb_gems_version = "1.0.7.1"
+merb_gems_version = "1.0.8"
 dm_gems_version   = "0.9.9"
 do_gems_version =  "0.9.10.1"
 dependency "merb-action-args", merb_gems_version
@@ -33,7 +33,7 @@ dependency 'merb-cache', merb_gems_version do
    CACHE_SETUP = true
   end
 end
-dependency 'nokogiri'
+dependency 'nokogiri', '>=1.1.1'
 dependency 'shorturl'
 dependency 'god'
 dependency 'daemons'
@@ -50,7 +50,10 @@ end
 
 Merb::BootLoader.after_app_loads do
   STARLING = MemCache.new('127.0.0.1:22122') 
-  
+  scheduler = Rufus::Scheduler.start_new
+  scheduler.every "10m" do
+    TwitterOnMerb.scrape
+  end
 end
 
 

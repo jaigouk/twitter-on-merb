@@ -47,22 +47,6 @@ God.watch do |w|
 end
 
 God.watch do |w|
-  w.name = 'scraping'
-  w.interval = 30.seconds
-  w.group = 'twitter'
-  w.start = "ruby #{MERB_ROOT}/lib/daemons/scraping_daemon_ctl.rb start"
-  w.restart = "ruby #{MERB_ROOT}/lib/daemons/scraping_daemon_ctl.rb restart"
-  w.stop = "ruby #{MERB_ROOT}/lib/daemons/scraping_daemon_ctl.rb stop"
-  
-  w.start_grace = 20.seconds
-  w.restart_grace = 20.seconds
-  w.pid_file = "#{MERB_ROOT}/log/scraping.pid"
-  
-  w.behavior(:clean_pid_file)
-  generic_monitoring(w, :cpu_limit => 30.percent, :memory_limit => 20.megabytes)
-end
-
-God.watch do |w|
   w.name = "consumer"
   w.interval = 60.seconds
   w.group = "twitter"
