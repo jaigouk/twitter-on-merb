@@ -10,15 +10,19 @@ body {
 }
 
 h1 {
-	font-size:80pt;
+	font-size:60pt;
 	font-family:Impact, "Franklin Gothic Heavy", "Arial Black";
 	font-weight:normal;
 	text-transform:uppercase;
 	line-height: 104pt;
 	margin-bottom:50px;
 }
+
+h1 a {
+	color: #b7e6f4
+}
 h2 {
-	font-size:30pt;
+	font-size:40pt;
 	font-family:Impact, "Franklin Gothic Heavy", "Arial Black";
 	font-weight:bold;
 	text-transform:uppercase;
@@ -180,7 +184,7 @@ div#rss_feeds ul li a:hover {
 	
 div#twitter_div {
 background: transparent url(/images/balloon2.png) no-repeat ; 
-position: absolute; left: 410px; top: 170px;
+position: absolute; left: 380px; top: 190px;
 z-index: 1;
 /*float: right; */
 width: 500px; 
