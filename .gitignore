@@ -4,6 +4,7 @@ log/*
 public/page_cache/*
 cache/fragments/*
 config/deploy.rb
+config/nginx.conf
 config/*.yml
 lib/nokogiri_practice.rb
 *.lock
