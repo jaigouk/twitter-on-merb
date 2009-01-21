@@ -7,7 +7,7 @@ MERB_ROOT = "/home/deploy/repos/twitter/current"
   God.watch do |w|
     w.name = "twitter-mongrel-#{port}"
     w.interval = 30.seconds # default      
-    w.start = "merb -a mongrel -c 2 #{MERB_ROOT} -p #{port} \
+    w.start = "merb -a mongrel -c 2 -m #{MERB_ROOT} -p #{port} \
       -P #{MERB_ROOT}/log/mongrel.#{port}.pid  -d"
     w.stop = "merb -K #{port}"
 #    w.restart = "merb restart -P #{MERB_ROOT}/log/mongrel.#{port}.pid"
@@ -15,7 +15,6 @@ MERB_ROOT = "/home/deploy/repos/twitter/current"
     w.restart_grace = 10.seconds
     w.pid_file = File.join(MERB_ROOT, "log/mongrel.#{port}.pid")
     
-      command="$merb --name "$process_name" -d -u $user -G $group -a $adapter -L $app_log_file -e $environment -m $app_dir -c $count -P '$pid_dir/$pid_file'"
       
  # clean pid files before start if necessary
   w.behavior(:clean_pid_file)
