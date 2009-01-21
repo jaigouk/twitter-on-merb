@@ -1,25 +1,66 @@
+# run with:  god -c /path/to/gravatar.god
 
-MERB_ROOT=File.join( File.dirname(__FILE__) + '/../')
-def generic_monitoring(w, options = {})
-  w.start_if do |start|
-    start.condition(:process_running) do |c|
-      c.interval = 10.seconds
-      c.running = false
+
+MERB_ROOT = "/home/deploy/repos/twitter/current"
+
+%w{4000 4001}.each do |port|
+  God.watch do |w|
+    w.name = "twitter-mongrel-#{port}"
+    w.interval = 30.seconds # default      
+    w.start = "merb -a mongrel -c 2 #{MERB_ROOT} -p #{port} \
+      -P #{MERB_ROOT}/log/mongrel.#{port}.pid  -d"
+    w.stop = "merb -K #{port}"
+#    w.restart = "merb restart -P #{MERB_ROOT}/log/mongrel.#{port}.pid"
+    w.start_grace = 10.seconds
+    w.restart_grace = 10.seconds
+    w.pid_file = File.join(MERB_ROOT, "log/mongrel.#{port}.pid")
+    
+      command="$merb --name "$process_name" -d -u $user -G $group -a $adapter -L $app_log_file -e $environment -m $app_dir -c $count -P '$pid_dir/$pid_file'"
+      
+ # clean pid files before start if necessary
+  w.behavior(:clean_pid_file)
+  
+  # determine the state on startup
+  w.transition(:init, { true => :up, false => :start }) do |on|
+    on.condition(:process_running) do |c|
+      c.running = true
     end
   end
   
-  w.restart_if do |restart|
-    restart.condition(:memory_usage) do |c|
-      c.above = options[:memory_limit]
-      c.times = [3, 5] # 3 out of 5 intervals
+  # determine when process has finished starting
+  w.transition([:start, :restart], :up) do |on|
+    on.condition(:process_running) do |c|
+      c.running = true
     end
-  
-    restart.condition(:cpu_usage) do |c|
-      c.above = options[:cpu_limit]
+    
+    # failsafe
+    on.condition(:tries) do |c|
       c.times = 5
+      c.transition = :start
+    end
+  end
+
+  # start if process is not running
+  w.transition(:up, :start) do |on|
+    on.condition(:process_exits)
+  end
+  
+  # restart if memory or cpu is too high
+  w.transition(:up, :restart) do |on|
+    on.condition(:memory_usage) do |c|
+      c.interval = 20
+      c.above = 50.megabytes
+      c.times = [3, 5]
+    end
+    
+    on.condition(:cpu_usage) do |c|
+      c.interval = 10
+      c.above = 10.percent
+      c.times = [3, 5]
     end
   end
   
+  # lifecycle
   w.lifecycle do |on|
     on.condition(:flapping) do |c|
       c.to_state = [:start, :restart]
@@ -32,17 +73,3 @@ def generic_monitoring(w, options = {})
     end
   end
 end
-
-God.watch do |w|
-  w.name = 'merb-mongrel'
-  w.interval = 30.seconds
-   w.group = 'merb'
-
-  w.start = "nohup merb -a mongrel -c 1 -m /home/deploy/repos/merb.kicks-ass.org/current -p 4000 -e production "
-
-  w.stop =  "merb -m /home/deploy/repos/merb.kicks-ass.org/current -k all"
-
-  w.behavior(:clean_pid_file)
-  generic_monitoring(w, :cpu_limit => 60.percent, :memory_limit => 150.megabytes)
-end
-
