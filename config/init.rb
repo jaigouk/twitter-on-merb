@@ -4,14 +4,16 @@ use_template_engine :erb
 
 merb_gems_version = "1.0.8.1"
 dm_gems_version   = "0.9.10"
-do_gems_version =  "0.9.11"
+do_gems_version   = "0.9.11"
+dependency "merb-core", merb_gems_version 
 dependency "merb-action-args", merb_gems_version
-dependency "merb-assets", merb_gems_version
+dependency "merb-assets", merb_gems_version  
 dependency "merb-helpers", merb_gems_version
 dependency "merb-param-protection", merb_gems_version
 dependency "merb-exceptions", merb_gems_version
 
 dependency "data_objects", do_gems_version
+dependency "dm-core", dm_gems_version         
 dependency "dm-aggregates", dm_gems_version
 dependency "dm-migrations", dm_gems_version
 dependency "dm-timestamps", dm_gems_version
@@ -19,7 +21,6 @@ dependency "dm-types", dm_gems_version
 dependency "dm-validations", dm_gems_version
 
 dependency "do_mysql", do_gems_version
-dependency "do_sqlite3", do_gems_version
 dependency "dm-core", dm_gems_version 
 
 dependency 'merb-cache', merb_gems_version do 
@@ -33,7 +34,7 @@ dependency 'merb-cache', merb_gems_version do
    CACHE_SETUP = true
   end
 end
-dependency 'nokogiri', '>=1.1.1'
+dependency 'nokogiri'
 dependency 'shorturl'
 dependency 'god'
 dependency 'daemons'
@@ -50,21 +51,7 @@ end
 
 Merb::BootLoader.after_app_loads do
   STARLING = MemCache.new('127.0.0.1:22122') 
-  begin
-    scheduler ||= Rufus::Scheduler.start_new
-    scheduler.every "10m" do
-      Tweet.scrape
-      Merb.logger.info("#{Time.now} scraping started")
-    end
-    scheduler.every "30m" do
-      FileUtils.rm_rf(Merb.root / :cache / :actions)
-      FileUtils.rm_rf(Merb.root / :cache / :fragments)
-      FileUtils.rm_rf(Merb.root / 'public' / 'page_cache')
-    end
-    scheduler.join 
-  rescue => e 
-    Merb.logger.warn "scheduler failed! -- #{Time.now}"
-  end   
+
 end
 
 
