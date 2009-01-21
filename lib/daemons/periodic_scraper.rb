@@ -27,7 +27,7 @@ begin
   scheduler ||= Rufus::Scheduler.start_new
 
   while($running) do
-    scheduler.every "1m" do
+    scheduler.every "25m" do
       Tweet.scrape
       Merb.logger.info("#{Time.now} scraping started")
     end
