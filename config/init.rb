@@ -3,15 +3,15 @@ use_test :rspec
 use_template_engine :erb
 
 merb_gems_version = "1.0.8"
-dm_gems_version   = "0.9.9"
-do_gems_version =  "0.9.10.1"
+dm_gems_version   = "0.9.10"
+do_gems_version =  "0.9.11"
 dependency "merb-action-args", merb_gems_version
 dependency "merb-assets", merb_gems_version
 dependency "merb-helpers", merb_gems_version
 dependency "merb-param-protection", merb_gems_version
 dependency "merb-exceptions", merb_gems_version
 
-dependency "data_objects", '0.9.10.1'
+dependency "data_objects", do_gems_version
 dependency "dm-aggregates", dm_gems_version
 dependency "dm-migrations", dm_gems_version
 dependency "dm-timestamps", dm_gems_version
