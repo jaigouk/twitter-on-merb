@@ -2,7 +2,7 @@ use_orm :datamapper
 use_test :rspec
 use_template_engine :erb
 
-merb_gems_version = "1.0.8"
+merb_gems_version = "1.0.8.1"
 dm_gems_version   = "0.9.10"
 do_gems_version =  "0.9.11"
 dependency "merb-action-args", merb_gems_version
