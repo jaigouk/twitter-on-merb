@@ -51,9 +51,9 @@ God.watch do |w|
   w.name = "scraper"
   w.interval = 60.seconds
   w.group = "twitter"
-  w.start = "merb -r #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb start -e production -P #{MERB_ROOT}/log/scraper.pid -L #{MERB_ROOT}/log/scraper.log"
-  w.restart = "merb -r #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb restart -e production -P #{MERB_ROOT}/log/scraper.pid L #{MERB_ROOT}/log/scraper.log"
-  w.stop = "merb -r #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb stop -e production -P #{MERB_ROOT}/log/scraper.pid L #{MERB_ROOT}/log/scraper.log"
+  w.start = "merb -r #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb start -e production -P #{MERB_ROOT}/log/scraper.pid "
+  w.restart = "merb -r #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb restart -e production -P #{MERB_ROOT}/log/scraper.pid "
+  w.stop = "merb -r #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb stop -e production -P #{MERB_ROOT}/log/scraper.pid "
   
   w.start_grace = 20.seconds
   w.restart_grace = 20.seconds
