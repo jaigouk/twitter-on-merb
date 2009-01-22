@@ -34,11 +34,11 @@ dependency 'merb-cache', merb_gems_version do
    CACHE_SETUP = true
   end
 end
-dependency 'nokogiri'
-dependency 'shorturl'
-dependency 'god'
-dependency 'daemons'
-
+require 'nokogiri'
+require 'shorturl'
+require 'god'
+require 'daemons'
+require 'starling'
 gem('twitter4r', '0.3.0')
 require 'twitter'
 require 'time'
@@ -47,12 +47,12 @@ require 'memcache'
 require 'rufus/scheduler'
 
 Merb::BootLoader.before_app_loads do
-  STARLING = MemCache.new('127.0.0.1:22122') 
+
 end
 
 Merb::BootLoader.after_app_loads do
 
-
+  STARLING = MemCache.new('127.0.0.1:22122') 
 end
 
 

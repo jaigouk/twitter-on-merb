@@ -6,7 +6,7 @@ MERB_ROOT = "/home/deploy/repos/twitter/current"
     w.group = "mongrel"
     w.interval = 30.seconds # default      
     w.start = "merb -a mongrel -c 1 -m #{MERB_ROOT} -p #{port} \
-      -P #{MERB_ROOT}/log/mongrel.#{port}.pid  -d"
+      -P #{MERB_ROOT}/log/mongrel.#{port}.pid  -e production"
     w.stop = "merb -K #{port}"
 #    w.restart = "merb restart -P #{MERB_ROOT}/log/mongrel.#{port}.pid"
     w.start_grace = 10.seconds
