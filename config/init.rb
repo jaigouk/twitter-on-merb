@@ -29,7 +29,7 @@ dependency 'merb-cache', merb_gems_version do
       register(:twitter_fragment_store, Merb::Cache::FileStore, :dir => Merb.root / 'cache' / 'fragments')
       register(:twitter_page_store, Merb::Cache::PageStore[Merb::Cache::FileStore], :dir => Merb.root / 'public' / 'page_cache')
       register(:default, Merb::Cache::AdhocStore[:twitter_page_store, :twitter_fragment_store])
-#        register(:memcached,  Merb::Cache::MemcachedStore, :namespace => "twitter", :servers => ["127.0.0.1:11211"])
+#        register(:memcached,  Merb::Cache::MemcachedStore, :namespace => "twitter", :servers => ["127.0.0.1:11211"]) 
    end
    CACHE_SETUP = true
   end
@@ -51,8 +51,9 @@ system 'starling -d -P log/pids/starling.pid -q log/starling_queue'
 end
 
 Merb::BootLoader.after_app_loads do
-
+#starling
   STARLING = MemCache.new('127.0.0.1:22122') 
+#scheduler
     scheduler ||= Rufus::Scheduler.start_new
     scheduler.every "30m" do
       Tweet.scrape
