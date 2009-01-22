@@ -53,18 +53,7 @@ end
 Merb::BootLoader.after_app_loads do
 #starling
   STARLING = MemCache.new('127.0.0.1:22122') 
-#scheduler
-    scheduler ||= Rufus::Scheduler.start_new
-    scheduler.every "30m" do
-      Tweet.scrape
-      Merb.logger.info("#{Time.now} scraping started")
-    end
-    scheduler.every "1h" do
-      FileUtils.rm_rf(Merb.root / :cache / :actions)
-      FileUtils.rm_rf(Merb.root / :cache / :fragments)
-      FileUtils.rm_rf(Merb.root / 'public' / 'page_cache')
-    end
-    scheduler.join 
+  scheduler ||= Rufus::Scheduler.start_new
 end
 
 

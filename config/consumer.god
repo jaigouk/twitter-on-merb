@@ -34,7 +34,21 @@ def generic_monitoring(w, options = {})
 end
 
 
-
+God.watch do |w|
+  w.name = "scraper"
+  w.interval = 60.seconds
+  w.group = "twitter"
+  w.start = "merb -r #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb start  "
+  w.restart = "merb -r  #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb restart"
+  w.stop = "merb -r  #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb stop"
+  
+  w.start_grace = 60.seconds
+  w.restart_grace = 60.seconds
+  w.pid_file = "#{MERB_ROOT}/log/scraper.pid"
+  
+  w.behavior(:clean_pid_file)
+  generic_monitoring(w, :cpu_limit => 70.percent, :memory_limit => 18.megabytes)
+end
 
 God.watch do |w|
   w.name = "consumer"
