@@ -1,13 +1,11 @@
-# run with:  god -c /path/to/gravatar.god
-
-
 MERB_ROOT = "/home/deploy/repos/twitter/current"
 
-%w{4000 4001}.each do |port|
+%w{4000}.each do |port|
   God.watch do |w|
     w.name = "twitter-mongrel-#{port}"
+    w.group = "mongrel"
     w.interval = 30.seconds # default      
-    w.start = "merb -a mongrel -c 2 -m #{MERB_ROOT} -p #{port} \
+    w.start = "merb -a mongrel -c 1 -m #{MERB_ROOT} -p #{port} \
       -P #{MERB_ROOT}/log/mongrel.#{port}.pid  -d"
     w.stop = "merb -K #{port}"
 #    w.restart = "merb restart -P #{MERB_ROOT}/log/mongrel.#{port}.pid"
