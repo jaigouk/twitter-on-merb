@@ -32,36 +32,27 @@ def generic_monitoring(w, options = {})
     end
   end
 end
-God.watch do |w|
-  w.name = 'start_starling'
-  w.interval = 30.seconds
-   w.group = 'twitter'
+#God.watch do |w|
+#  w.name = 'start_starling'
+#  w.interval = 10.seconds
+ #  w.group = 'twitter'
   # I do NOT specify the -d parameter which daemonizes beanstalkd.
   # I do this so God can make it a daemon for me!
+ #w.start = "/usr/bin/starling -P #{MERB_ROOT}/log/starling.pid "
+ # w.start = "/usr/local/bin/starling -P #{MERB_ROOT}/log/starling.pid "
+ # w.stop =  "kill `cat #{MERB_ROOT}/log/starling.pid`"
+  #w.pid_file = "#{MERB_ROOT}/log/starling.pid"
 
-   w.start = "/usr/local/bin/starling -P #{MERB_ROOT}/log/starling.pid -q #{MERB_ROOT}/log/"
-  w.stop =  "kill `cat #{MERB_ROOT}/log/starling.pid`"
-  w.pid_file = "#{MERB_ROOT}/log/starling.pid"
-  w.behavior(:clean_pid_file)
-  generic_monitoring(w, :cpu_limit => 60.percent, :memory_limit => 100.megabytes)
-end
-
-
-God.watch do |w|
-  w.name = "scraper"
-  w.interval = 60.seconds
-  w.group = "twitter"
-  w.start = "merb -r #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb start -e production -P #{MERB_ROOT}/log/scraper.pid "
-  w.restart = "merb -r #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb restart -e production -P #{MERB_ROOT}/log/scraper.pid "
-  w.stop = "merb -r #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb stop -e production -P #{MERB_ROOT}/log/scraper.pid "
+   # w.start_grace = 5.seconds
+  #w.restart_grace = 5.seconds
+  #w.pid_file = "#{MERB_ROOT}/log/scraper.pid"
   
-  w.start_grace = 20.seconds
-  w.restart_grace = 20.seconds
-  w.pid_file = "#{MERB_ROOT}/log/scraper.pid"
+  #w.behavior(:clean_pid_file)
+  #generic_monitoring(w, :cpu_limit => 90.percent, :memory_limit => 3.megabytes)
   
-  w.behavior(:clean_pid_file)
-  generic_monitoring(w, :cpu_limit => 60.percent, :memory_limit => 100.megabytes)
-end
+#end
+
+
 
 God.watch do |w|
   w.name = "consumer"
@@ -71,12 +62,12 @@ God.watch do |w|
   w.restart = "ruby #{MERB_ROOT}/lib/daemons/starling_daemon_ctl.rb restart"
   w.stop = "ruby #{MERB_ROOT}/lib/daemons/starling_daemon_ctl.rb stop"
   
-  w.start_grace = 20.seconds
-  w.restart_grace = 20.seconds
+  w.start_grace = 60.seconds
+  w.restart_grace = 60.seconds
   w.pid_file = "#{MERB_ROOT}/log/consumer.pid"
   
   w.behavior(:clean_pid_file)
-  generic_monitoring(w, :cpu_limit => 60.percent, :memory_limit => 100.megabytes)
+  generic_monitoring(w, :cpu_limit => 90.percent, :memory_limit => 30.megabytes)
 end
 
 

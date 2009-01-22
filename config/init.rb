@@ -47,12 +47,23 @@ require 'memcache'
 require 'rufus/scheduler'
 
 Merb::BootLoader.before_app_loads do
-
+system 'starling -d -P log/pids/starling.pid -q log/starling_queue'
 end
 
 Merb::BootLoader.after_app_loads do
 
   STARLING = MemCache.new('127.0.0.1:22122') 
+    scheduler ||= Rufus::Scheduler.start_new
+    scheduler.every "30m" do
+      Tweet.scrape
+      Merb.logger.info("#{Time.now} scraping started")
+    end
+    scheduler.every "1h" do
+      FileUtils.rm_rf(Merb.root / :cache / :actions)
+      FileUtils.rm_rf(Merb.root / :cache / :fragments)
+      FileUtils.rm_rf(Merb.root / 'public' / 'page_cache')
+    end
+    scheduler.join 
 end
 
 
