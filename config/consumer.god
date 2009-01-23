@@ -58,10 +58,10 @@ God.watch do |w|
   w.name = "consumer"
   w.interval = 60.seconds
   w.group = "twitter"
-  w.start =  "/bin/bash -c 'cd #{MERB_ROOT}; lib/daemons/starling_daemon_ctl.rb start'"
+  w.start =  "/bin/bash -c 'cd #{MERB_ROOT}; ruby lib/daemons/starling_daemon_ctl.rb start'"
 
-  w.restart = "/bin/bash -c 'cd #{MERB_ROOT}; lib/daemons/starling_daemon_ctl.rb restart'"
-  w.stop = "/bin/bash -c 'cd #{MERB_ROOT}; lib/daemons/starling_daemon_ctl.rb stop'"
+  w.restart = "/bin/bash -c 'cd #{MERB_ROOT}; ruby  lib/daemons/starling_daemon_ctl.rb restart'"
+  w.stop = "/bin/bash -c 'cd #{MERB_ROOT}; ruby  lib/daemons/starling_daemon_ctl.rb stop'"
   
   w.start_grace = 60.seconds
   w.restart_grace = 60.seconds
