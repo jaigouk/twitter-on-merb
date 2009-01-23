@@ -27,11 +27,11 @@ class Tweet
   def self.scrape
 
     merb = 'http://github.com/wycats/merb/commits/1.0.x'
-    negotiation = 'http://github.com/wycats/rails/commits/master'
+    rails3 = 'http://github.com/wycats/rails/commits/rails3'
     blog= 'http://yehudakatz.com'
 
     self.get_commits_and_bark(merb, "edgemerb")
-    self.get_commits_and_bark(negotiation, "wycats_rails")
+    self.get_commits_and_bark(rails3, "wycats_rails")
     self.get_blog_and_bark(blog)
   end    
     
