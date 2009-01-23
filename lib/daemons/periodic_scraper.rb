@@ -1,20 +1,4 @@
 #!/usr/bin/env ruby
-##require 'rubygems'
-#require 'merb'
-#require 'nokogiri'
-#require 'shorturl'
-#require 'god'
-#require 'daemons'
-
-#gem('twitter4r', '0.3.0')
-#require 'twitter'
-#require 'time'
-#require 'open-uri'
-#require 'memcache'
-#require 'rufus/scheduler'
-#require File.join( File.dirname(__FILE__) +'/../../', 'config', 'dependencies.rb')
-#require File.join( File.dirname(__FILE__) + '/../../', 'models', 'tweet.rb')
-
 
 $running = true
 Signal.trap("TERM") do
