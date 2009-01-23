@@ -15,7 +15,7 @@ require 'open-uri'
 require 'daemons'
  
 sleep_time = 0
-starling = MemCache.new('127.0.0.1:22122')
+starling = MemCache.new('127.0.0.1:22123')
 
 config_file = File.join( File.dirname(__FILE__) + '/../../', 'config', 'twitter.yml')
   message = starling.get('twitter_post')
@@ -39,3 +39,4 @@ while($running) do
   sleep sleep_time
 end #loop end
  
+

@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'daemons'
-
+ 
 starling_client = File.join(File.dirname(__FILE__), "starling_consumer.rb")
   
 options = {

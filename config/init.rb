@@ -51,9 +51,9 @@ system 'starling -d -P log/pids/starling.pid -q log/starling_queue'
 end
 
 Merb::BootLoader.after_app_loads do
-#starling
+
   STARLING = MemCache.new('127.0.0.1:22122') 
-  scheduler ||= Rufus::Scheduler.start_new
+
 end
 
 

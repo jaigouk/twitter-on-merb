@@ -1,17 +1,17 @@
 #!/usr/bin/env ruby
-require 'rubygems'
+##require 'rubygems'
 #require 'merb'
-require 'nokogiri'
-require 'shorturl'
-require 'god'
-require 'daemons'
+#require 'nokogiri'
+#require 'shorturl'
+#require 'god'
+#require 'daemons'
 
-gem('twitter4r', '0.3.0')
-require 'twitter'
-require 'time'
-require 'open-uri'
-require 'memcache'
-require 'rufus/scheduler'
+#gem('twitter4r', '0.3.0')
+#require 'twitter'
+#require 'time'
+#require 'open-uri'
+#require 'memcache'
+#require 'rufus/scheduler'
 #require File.join( File.dirname(__FILE__) +'/../../', 'config', 'dependencies.rb')
 #require File.join( File.dirname(__FILE__) + '/../../', 'models', 'tweet.rb')
 
@@ -22,12 +22,12 @@ Signal.trap("TERM") do
 end
  
 require 'rufus/scheduler'
-require 'daemons'
+#require 'daemons'
 begin
   scheduler ||= Rufus::Scheduler.start_new
 
   while($running) do
-    scheduler.every "10m" do
+    scheduler.every "5m" do
       Tweet.scrape
       Merb.logger.info("#{Time.now} scraping started")
     end

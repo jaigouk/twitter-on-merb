@@ -1,5 +1,5 @@
 
-MERB_ROOT=File.join( File.dirname(__FILE__) + '/../')
+MERB_ROOT='/home/jaigouk/development/twitter-on-merb'
 def generic_monitoring(w, options = {})
   w.start_if do |start|
     start.condition(:process_running) do |c|
@@ -33,37 +33,26 @@ def generic_monitoring(w, options = {})
   end
 end
 
-
 God.watch do |w|
   w.name = "scraper"
   w.interval = 60.seconds
   w.group = "twitter"
-  w.start = "merb -r #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb start  "
-  w.restart = "merb -r  #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb restart"
-  w.stop = "merb -r  #{MERB_ROOT}/lib/daemons/scrape_daemon_ctl.rb stop"
+    port = 4091
+  w.start = "/bin/bash -c 'cd #{MERB_ROOT}; merb -r lib/daemons/periodic_scraper.rb -e production -d -p #{port} -P merb.#{port}.pid'"
   
-  w.start_grace = 60.seconds
-  w.restart_grace = 60.seconds
-  w.pid_file = "#{MERB_ROOT}/log/scraper.pid"
+  w.stop = "/bin/bash -c 'cd #{MERB_ROOT}; merb -k #{port}'"
+
+w.restart = "/bin/bash -c 'cd #{MERB_ROOT}; merb -k #{port}; sleep 2; merb -r lib/daemons/periodic_scraper.rb -e production -d -p #{port} -P merb.#{port}.pid'"
+
+
+  w.start_grace = 20.seconds
+  w.restart_grace = 30.seconds
   
+   w.pid_file = File.join(MERB_ROOT, "/log/merb.#{port}.pid")
   w.behavior(:clean_pid_file)
   generic_monitoring(w, :cpu_limit => 70.percent, :memory_limit => 18.megabytes)
 end
 
-God.watch do |w|
-  w.name = "consumer"
-  w.interval = 60.seconds
-  w.group = "twitter"
-  w.start = "ruby #{MERB_ROOT}/lib/daemons/starling_daemon_ctl.rb start"
-  w.restart = "ruby #{MERB_ROOT}/lib/daemons/starling_daemon_ctl.rb restart"
-  w.stop = "ruby #{MERB_ROOT}/lib/daemons/starling_daemon_ctl.rb stop"
-  
-  w.start_grace = 60.seconds
-  w.restart_grace = 60.seconds
-  w.pid_file = "#{MERB_ROOT}/log/consumer.pid"
-  
-  w.behavior(:clean_pid_file)
-  generic_monitoring(w, :cpu_limit => 70.percent, :memory_limit => 18.megabytes)
-end
+
 
 
