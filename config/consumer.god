@@ -50,7 +50,7 @@ w.restart = "/bin/bash -c 'cd #{MERB_ROOT}; merb -k #{port}; sleep 2; merb -r li
   
    w.pid_file = File.join(MERB_ROOT, "/log/merb.#{port}.pid")
   w.behavior(:clean_pid_file)
-  generic_monitoring(w, :cpu_limit => 70.percent, :memory_limit => 18.megabytes)
+  generic_monitoring(w, :cpu_limit => 70.percent, :memory_limit => 30.megabytes)
 end
 
 
