@@ -45,7 +45,7 @@ require 'time'
 require 'open-uri'
 require 'memcache'
 require 'rufus/scheduler'
-
+require 'fileutils' 
 Merb::BootLoader.before_app_loads do
 system 'starling -d -P log/pids/starling.pid -q log/starling_queue'
 end
@@ -53,6 +53,26 @@ end
 Merb::BootLoader.after_app_loads do
 
   STARLING = MemCache.new('127.0.0.1:22122') 
+ 
+if Merb.environment == 'production' && (not File.exist?('tmp/scheduler.lock'))
+  FileUtils.touch('tmp/scheduler.lock')
+  scheduler ||= Rufus::Scheduler.start_new
+
+    scheduler.every "1m" do
+#      self.scrape
+    puts "hello! Task Invoked: #{Time.now}"
+    end
+end 
+
+if Module.constants.include?('Mongrel') then
+  class Mongrel::HttpServer
+    alias :old_graceful_shutdown :graceful_shutdown
+    def graceful_shutdown
+      FileUtils.rm('tmp/scheduler.lock', :force => true)
+      old_graceful_shutdown
+    end
+  end
+end 
 
 end
 

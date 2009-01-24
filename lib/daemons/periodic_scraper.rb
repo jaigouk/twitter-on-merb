@@ -1,16 +1,16 @@
 #!/usr/bin/env ruby
 
-$running = true
-Signal.trap("TERM") do
-  $running = false
-end
- 
+#$running = true
+#Signal.trap("TERM") do
+#  $running = false
+#end
+# 
 require 'rufus/scheduler'
 #require 'daemons'
-begin
+#begin
   scheduler ||= Rufus::Scheduler.start_new
 
-  while($running) do
+#  while($running) do
     scheduler.every "30m" do
       Tweet.scrape
       Merb.logger.info("#{Time.now} scraping started")
@@ -21,10 +21,10 @@ begin
       FileUtils.rm_rf(Merb.root / 'public' / 'page_cache')
     end
     scheduler.join 
-  end #loop end
-rescue => e 
-  Merb.logger.warn "scheduler failed! -- #{Time.now}"
-end   
+#  end #loop end
+#rescue => e 
+#  Merb.logger.warn "scheduler failed! -- #{Time.now}"
+#end   
    
 
   

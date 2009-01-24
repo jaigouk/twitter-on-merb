@@ -1,5 +1,6 @@
 # referenced API.
 # http://merbapi.com/classes/Merb/BootLoader/BuildFramework.html
+
 class Tweet
   include DataMapper::Resource
 
@@ -21,7 +22,6 @@ class Tweet
   def self.latest
     first(:order => [:created_at.desc])
   end  
- 
 
 
   def self.scrape
