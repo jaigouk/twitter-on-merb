@@ -58,7 +58,7 @@ Merb::BootLoader.after_app_loads do
     FileUtils.touch('tmp/scheduler.lock')
     scheduler ||= Rufus::Scheduler.start_new
       scheduler.every "30m" do
-        self.scrape
+        Tweet.scrape
 
       end
   end 
