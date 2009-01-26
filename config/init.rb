@@ -57,9 +57,9 @@ Merb::BootLoader.after_app_loads do
   if Merb.environment == 'production' && (not File.exist?('tmp/scheduler.lock'))
     FileUtils.touch('tmp/scheduler.lock')
     scheduler ||= Rufus::Scheduler.start_new
-      scheduler.every "1m" do
+      scheduler.every "30m" do
         self.scrape
-#      puts "hello! Task Invoked: #{Time.now}"
+
       end
   end 
 
