@@ -9,6 +9,7 @@ h1. Description
 
 This is a merb flat app that gather feeds from edge merb commits and 
 push the messages to twitter.com/edgemerb. 
+http://jaigouk.blogspot.com/2009/01/twitter-on-merb-merb-flat-app.html
 
 h1. Motivation
 
