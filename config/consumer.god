@@ -1,6 +1,6 @@
 
-#MERB_ROOT='/home/deploy/repos/twitter/current'
-MERB_ROOT='/home/jaigouk/development/twitter-on-merb'
+MERB_ROOT='/home/deploy/repos/twitter/current'
+#MERB_ROOT='/home/jaigouk/development/twitter-on-merb'
 def generic_monitoring(w, options = {})
   w.start_if do |start|
     start.condition(:process_running) do |c|
