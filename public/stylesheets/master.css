@@ -183,14 +183,14 @@ div#rss_feeds ul li a:hover {
 	
 	
 div#twitter_div {
-background: transparent url(/images/balloon2.png) no-repeat ; 
-position: absolute; left: 380px; top: 190px;
+background: transparent url(/images/balloon_square.png) no-repeat ; 
+position: absolute; left: 430px; top:200px;
 z-index: 1;
 /*float: right; */
 width: 500px; 
 height: 404px; 
-padding-left: 90px; 
-padding-top: 90px;
+padding-left: 50px; 
+padding-top: 25px;
 }
 div#twit {
 width: 400px; 

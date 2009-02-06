@@ -46,6 +46,7 @@ require 'open-uri'
 require 'memcache'
 require 'rufus/scheduler'
 require 'fileutils' 
+#require 'grit'
 Merb::BootLoader.before_app_loads do
 system 'starling -d -P log/pids/starling.pid -q log/starling_queue'
 end
