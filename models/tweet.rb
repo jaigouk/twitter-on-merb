@@ -52,7 +52,7 @@ class Tweet
       h.search('pre a[href]').each do |k| 
        @link =  (k.attributes)
          begin
-           @new_link =  ShortURL.shorten("http://github.com" + @link.to_s.strip.gsub("href", ''), :rubyurl)
+           @new_link =  ShortURL.shorten("http://github.com" + @link.to_s.strip.gsub("href", ''), :shorl)
          rescue  => e
            @new_link =  ShortURL.shorten("http://github.com" + @link.to_s.strip.gsub("href", ''), :tinyurl)
          rescue Timeout::Error => e
@@ -79,7 +79,7 @@ class Tweet
         h.search('h3 a[href]').each do |k| 
           @link =  (k.attributes)
            begin
-             @new_link =  ShortURL.shorten(@link.to_s.strip.gsub("href", '').gsub('relbookmark',''), :rubyurl)
+             @new_link =  ShortURL.shorten(@link.to_s.strip.gsub("href", '').gsub('relbookmark',''), :shorl)
            rescue  => e
              @new_link =  ShortURL.shorten(@link.to_s.strip.gsub("href", '').gsub('relbookmark',''), :tinyurl)
            rescue Timeout::Error => e

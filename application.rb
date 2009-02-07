@@ -19,8 +19,6 @@ class TwitterOnMerb < Merb::Controller
  
 # just another plain html   
   def about
-#  repo = Repo.new("/home/jaigouk/git-gem/merb")
-#  @commits = repo.commits('master',20)
     render 
   end
 
