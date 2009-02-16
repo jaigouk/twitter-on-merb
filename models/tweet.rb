@@ -26,8 +26,8 @@ class Tweet
 
   def self.scrape
 
-    merb = 'http://github.com/wycats/merb/commits/1.0.x'
-    rails3 = 'http://github.com/wycats/rails/commits/rails3'
+    merb = 'http://github.com/wycats/merb/commits/1.1'
+    rails3 = 'http://github.com/wycats/rails/commits/master'
     blog= 'http://yehudakatz.com'
 
     self.get_commits_and_bark(merb, "edgemerb")
@@ -52,7 +52,7 @@ class Tweet
       h.search('pre a[href]').each do |k| 
        @link =  (k.attributes)
          begin
-           @new_link =  ShortURL.shorten("http://github.com" + @link.to_s.strip.gsub("href", ''), :shorl)
+           @new_link =  ShortURL.shorten("http://github.com" + @link.to_s.strip.gsub("href", ''), :rubyurl)
          rescue  => e
            @new_link =  ShortURL.shorten("http://github.com" + @link.to_s.strip.gsub("href", ''), :tinyurl)
          rescue Timeout::Error => e
@@ -79,7 +79,7 @@ class Tweet
         h.search('h3 a[href]').each do |k| 
           @link =  (k.attributes)
            begin
-             @new_link =  ShortURL.shorten(@link.to_s.strip.gsub("href", '').gsub('relbookmark',''), :shorl)
+             @new_link =  ShortURL.shorten(@link.to_s.strip.gsub("href", '').gsub('relbookmark',''), :rubyurl)
            rescue  => e
              @new_link =  ShortURL.shorten(@link.to_s.strip.gsub("href", '').gsub('relbookmark',''), :tinyurl)
            rescue Timeout::Error => e
