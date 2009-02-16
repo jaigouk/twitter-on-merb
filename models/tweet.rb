@@ -30,7 +30,7 @@ class Tweet
     rails3 = 'http://github.com/wycats/rails/commits/master'
     blog= 'http://yehudakatz.com'
 
-    self.get_commits_and_bark(merb, "edgemerb")
+    self.get_commits_and_bark(merb, "merb 1.1")
     self.get_commits_and_bark(rails3, "wycats_rails")
     self.get_blog_and_bark(blog)
   end    
