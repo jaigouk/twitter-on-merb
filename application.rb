@@ -1,5 +1,5 @@
 class TwitterOnMerb < Merb::Controller
- 
+
 
 #  cache :commits, :about
   def _template_location(action, type = nil, controller = controller_name)
@@ -8,18 +8,18 @@ class TwitterOnMerb < Merb::Controller
 
 #shows twitter
   def index
-    render   
+    render
   end
 
 #aggregate rss feeds and edge merb rdoc
   def commits
-    
+
     render
   end
- 
-# just another plain html   
+
+# just another plain html
   def about
-    render 
+    render
   end
 
 

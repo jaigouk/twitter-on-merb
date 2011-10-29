@@ -1,8 +1,8 @@
 require 'rubygems'
 require 'daemons'
- 
+
 starling_client = File.join(File.dirname(__FILE__), "starling_consumer.rb")
-  
+
 options = {
   :dir_mode => :normal,
   :dir => File.join(File.dirname(__FILE__), "..", "..", "log"),
@@ -12,8 +12,8 @@ options = {
   :backtrace => true,
   :monitor => false
 }
- 
+
 Daemons.run(starling_client, options)
- 
- 
+
+
 # ruby starling_daemon_ctl.rb start

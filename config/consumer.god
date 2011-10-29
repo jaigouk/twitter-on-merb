@@ -8,19 +8,19 @@ def generic_monitoring(w, options = {})
       c.running = false
     end
   end
-  
+
   w.restart_if do |restart|
     restart.condition(:memory_usage) do |c|
       c.above = options[:memory_limit]
       c.times = [3, 5] # 3 out of 5 intervals
     end
-  
+
     restart.condition(:cpu_usage) do |c|
       c.above = options[:cpu_limit]
       c.times = 5
     end
   end
-  
+
   w.lifecycle do |on|
     on.condition(:flapping) do |c|
       c.to_state = [:start, :restart]
@@ -40,7 +40,7 @@ end
 #  w.group = "twitter"
 #    port = 4091
 #  w.start = "/bin/bash -c 'cd #{MERB_ROOT}; merb -r lib/daemons/periodic_scraper.rb -e production -d -p #{port}  -h 127.0.0.1  -m #{MERB_ROOT} -P log/merb.#{port}.pid'"
-  
+
 #  w.stop = "/bin/bash -c 'cd #{MERB_ROOT}; merb -k #{port}'"
 
 #w.restart = "/bin/bash -c 'cd #{MERB_ROOT}; merb -k #{port}; sleep 2; merb -r lib/daemons/periodic_scraper.rb -e production -d -p #{port} -m #{MERB_ROOT} -P log/merb.#{port}.pid'"
@@ -48,7 +48,7 @@ end
 
 #  w.start_grace = 5.seconds
 #  w.restart_grace = 5.seconds
-  
+
 #   w.pid_file = File.join(MERB_ROOT, "/log/merb.#{port}.pid")
 #  w.behavior(:clean_pid_file)
 #  generic_monitoring(w, :cpu_limit => 70.percent, :memory_limit => 30.megabytes)
@@ -63,12 +63,12 @@ God.watch do |w|
 
   w.restart = "/bin/bash -c 'cd #{MERB_ROOT}; ruby  lib/daemons/starling_daemon_ctl.rb restart'"
   w.stop = "/bin/bash -c 'cd #{MERB_ROOT}; ruby  lib/daemons/starling_daemon_ctl.rb stop'"
-  
+
   w.start_grace = 60.seconds
   w.restart_grace = 60.seconds
   w.pid_file = "#{MERB_ROOT}/log/consumer.pid"
-  
+
   w.behavior(:clean_pid_file)
   generic_monitoring(w, :cpu_limit => 70.percent, :memory_limit => 18.megabytes)
 end
-  
+
