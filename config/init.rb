@@ -5,15 +5,15 @@ use_template_engine :erb
 merb_gems_version = ">=1.0.8.1"
 dm_gems_version   = ">=0.9.10"
 do_gems_version   = ">=0.9.11"
-dependency "merb-core", merb_gems_version 
+dependency "merb-core", merb_gems_version
 dependency "merb-action-args", merb_gems_version
-dependency "merb-assets", merb_gems_version  
+dependency "merb-assets", merb_gems_version
 dependency "merb-helpers", merb_gems_version
 dependency "merb-param-protection", merb_gems_version
 dependency "merb-exceptions", merb_gems_version
 
 dependency "data_objects", do_gems_version
-dependency "dm-core", dm_gems_version         
+dependency "dm-core", dm_gems_version
 dependency "dm-aggregates", dm_gems_version
 dependency "dm-migrations", dm_gems_version
 dependency "dm-timestamps", dm_gems_version
@@ -21,15 +21,15 @@ dependency "dm-types", dm_gems_version
 dependency "dm-validations", dm_gems_version
 
 dependency "do_mysql", do_gems_version
-dependency "dm-core", dm_gems_version 
+dependency "dm-core", dm_gems_version
 
-dependency 'merb-cache', merb_gems_version do 
+dependency 'merb-cache', merb_gems_version do
   Merb::Cache.setup do
     unless defined? CACHE_SETUP
       register(:twitter_fragment_store, Merb::Cache::FileStore, :dir => Merb.root / 'cache' / 'fragments')
       register(:twitter_page_store, Merb::Cache::PageStore[Merb::Cache::FileStore], :dir => Merb.root / 'public' / 'page_cache')
       register(:default, Merb::Cache::AdhocStore[:twitter_page_store, :twitter_fragment_store])
-#        register(:memcached,  Merb::Cache::MemcachedStore, :namespace => "twitter", :servers => ["127.0.0.1:11211"]) 
+#        register(:memcached,  Merb::Cache::MemcachedStore, :namespace => "twitter", :servers => ["127.0.0.1:11211"])
    end
    CACHE_SETUP = true
   end
@@ -45,7 +45,7 @@ require 'time'
 require 'open-uri'
 require 'memcache'
 require 'rufus/scheduler'
-require 'fileutils' 
+require 'fileutils'
 #require 'grit'
 Merb::BootLoader.before_app_loads do
 system 'starling -d -P log/pids/starling.pid -q log/starling_queue'
@@ -53,8 +53,8 @@ end
 
 Merb::BootLoader.after_app_loads do
 
-  STARLING = MemCache.new('127.0.0.1:22122') 
- 
+  STARLING = MemCache.new('127.0.0.1:22122')
+
   if Merb.environment == 'production' && (not File.exist?('tmp/scheduler.lock'))
     FileUtils.touch('tmp/scheduler.lock')
     scheduler ||= Rufus::Scheduler.start_new
@@ -62,7 +62,7 @@ Merb::BootLoader.after_app_loads do
         Tweet.scrape
 
       end
-  end 
+  end
 
   if Module.constants.include?('Mongrel') then
     class Mongrel::HttpServer
@@ -72,7 +72,7 @@ Merb::BootLoader.after_app_loads do
         old_graceful_shutdown
       end
     end
-  end 
+  end
 end
 
 

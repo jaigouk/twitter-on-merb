@@ -1,6 +1,6 @@
 <%- Tweet.recent.all(:limit => 20).each do |tweet| %>
         <li>
-          <b id="<%= tweet.category%>"><%= tweet.category%></b> 
+          <b id="<%= tweet.category%>"><%= tweet.category%></b>
           <a href='<%=tweet.link%>'><%= tweet.message %></a><br/>
           <font><%=  relative_date(Time.parse(tweet.date)) %></font><br/>
         </li>

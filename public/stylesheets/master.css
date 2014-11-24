@@ -1,4 +1,4 @@
-       
+
 body {
 /*	background-color:#17b6de;*/
 	background-color:#352726;
@@ -122,10 +122,10 @@ div#rss_feeds ul{
 	margin-left: 0;
 	padding-left: 1em;
 	text-indent: -1em;
-	
+
 
 	}
-	
+
 div#rss_feeds ul li:before {
 	content: "\00BB \0020";
 	}
@@ -170,7 +170,7 @@ div#rss_feeds ul li font{
 	font-style:italic;
 	font-weight:normal;
 	}
-	
+
 div#rss_feeds ul li a {
 	color:#000000;
 	text-decoration:underline;
@@ -180,22 +180,22 @@ div#rss_feeds ul li a:hover {
 	color:#000000;
 	text-decoration:none;
 }
-	
-	
-	
+
+
+
 div#twitter_div {
-background: transparent url(/images/balloon_square.png) no-repeat ; 
+background: transparent url(/images/balloon_square.png) no-repeat ;
 position: absolute; left: 430px; top:200px;
 z-index: 1;
 /*float: right; */
-width: 500px; 
-height: 404px; 
-padding-left: 50px; 
+width: 500px;
+height: 404px;
+padding-left: 50px;
 padding-top: 25px;
 }
 div#twit {
-width: 400px; 
-height:404px; 
+width: 400px;
+height:404px;
 }
 div#twitter_div ul {
 	list-style: none;

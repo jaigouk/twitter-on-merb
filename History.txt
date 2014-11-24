@@ -24,7 +24,7 @@ $merb-gen flat MyApp
 $git init
 $capify .
 
-eddited config/framework.rb Because I could not use twitter_search gem to verify the message is unique or not. This is same as twitter timeline api. It seems that they use cache. Therefor I had to add a model to check the message I'm sending is unique or not. 
+eddited config/framework.rb Because I could not use twitter_search gem to verify the message is unique or not. This is same as twitter timeline api. It seems that they use cache. Therefor I had to add a model to check the message I'm sending is unique or not.
 
 <script src="http://gist.github.com/44598.js"></script>
 
@@ -36,23 +36,23 @@ $merb-gen model tweet
 $rake db:automigrate
 Since merb flat app has a single controller file, It was easy too start. But the twitter api and nokogiri took some time to use. I picked one of the recommended templates from samshmagazine.(http://www.smashingmagazine.com/2008/12/01/100-free-high-quality-xhtmlcss-templates/)
 
-There were 3 or 4 ruby libraries for twitter. And twitter4r has more documents than the others. It took much time to discover that timeline api and search api use cache. I just forgot about the cache. Anyway I installed necessary gems. 
+There were 3 or 4 ruby libraries for twitter. And twitter4r has more documents than the others. It took much time to discover that timeline api and search api use cache. I just forgot about the cache. Anyway I installed necessary gems.
 
 $sudo gem install twitter4r twitter nokogiri shorturl
 
 And then I eddited index.html.erb file. In the controller, it only needs render method.
 <script src="http://gist.github.com/44605.js"></script>
 
-Since I was not familiar with nokogiri, I googled and found this tutorial. (http://www.robertsosinski.com/2008/12/08/scraping-pages-made-easy-with-ruby-and-nokogiri/). Actually, I just wanted to use feedtools and feedupdater gem. But there were not enough document to reference and as merb-book says, I better not use codes that I don't understand. Scraping pages with nokogiri is easy but my app would be fragile. 
+Since I was not familiar with nokogiri, I googled and found this tutorial. (http://www.robertsosinski.com/2008/12/08/scraping-pages-made-easy-with-ruby-and-nokogiri/). Actually, I just wanted to use feedtools and feedupdater gem. But there were not enough document to reference and as merb-book says, I better not use codes that I don't understand. Scraping pages with nokogiri is easy but my app would be fragile.
 
 <script src="http://gist.github.com/44610.js"></script>
 
-I know the codes above is not that beautiful. But I hope this code help another rubist who want  example. As you see above, k.content which was return by nokogiri's search method was Hash. This is why i used to_s method. 
-And posting a message to twitter was tricky for me. Because of increasing popularity of twitter, posting throuth api was too fast for twitter sometimes. Posting messages takes much time and that code block needs to sleep. So I wrapped the block with run_later. If I was developing on Rails, I would dig starling. But just one run_later block does the background work. 
+I know the codes above is not that beautiful. But I hope this code help another rubist who want  example. As you see above, k.content which was return by nokogiri's search method was Hash. This is why i used to_s method.
+And posting a message to twitter was tricky for me. Because of increasing popularity of twitter, posting throuth api was too fast for twitter sometimes. Posting messages takes much time and that code block needs to sleep. So I wrapped the block with run_later. If I was developing on Rails, I would dig starling. But just one run_later block does the background work.
 <img src="http://sites.google.com/site/merbsprout/_/rsrc/1231396291925/Home/whale.jpg">
 <script src="http://gist.github.com/44612.js"></script>
 
-That is what I've done for 2days. Well, I hope this little app help another merbists. And I used bellow code to delete all tweets. 
+That is what I've done for 2days. Well, I hope this little app help another merbists. And I used bellow code to delete all tweets.
 <script src="http://gist.github.com/44616.js"></script>
 
 I still did not implemented job scheduling(Jan 8, 2009) and caching is just what I need now.
@@ -64,7 +64,7 @@ http://merbunity.com/tutorials/15
 quick and easy guide - written by Dan Kubb(a.k.a dkubb) on July 22, 2008
 http://gist.github.com/616
 
-Merb-cache's methods written by Guillaume Maury on Dec 19, 2008 
+Merb-cache's methods written by Guillaume Maury on Dec 19, 2008
 http://gom-jabbar.org/articles/2008/12/19/merb-cache-s-methods
 
 Here's quick introduction
@@ -72,17 +72,17 @@ Here's quick introduction
 <quote>
 == Quick intro
   With fragment caching, you can mix dynamic and static content.
- 
+
   With action caching, the whole template is cached
   but the before filters are still processed.
- 
+
   With page caching, the whole template is put in html files in a special
-  directory in order to be handled directly without triggering Merb. 
-  
+  directory in order to be handled directly without triggering Merb.
+
   by Dan Kubb  on July 22, 2008
 </quote>
 
-But my init file was wrong and throws erros whenever I run "rake db:automigrate" since I set up the cache(http://gist.github.com/44702). I really didn't know how to fix this. At first, I guessed that datamapper version could be the reason why causes it. After updating the gems, error were still there. Fortunately I have known him recently via twitter. He helped to get out of this. This code was not familiar with me. I thought I knew the way to setup the cache.  
+But my init file was wrong and throws erros whenever I run "rake db:automigrate" since I set up the cache(http://gist.github.com/44702). I really didn't know how to fix this. At first, I guessed that datamapper version could be the reason why causes it. After updating the gems, error were still there. Fortunately I have known him recently via twitter. He helped to get out of this. This code was not familiar with me. I thought I knew the way to setup the cache.
 
 <script src='http://pastie.org/355604.js'></script>
 
@@ -90,20 +90,20 @@ The codes were already in his article (http://gom-jabbar.org/articles/2008/12/14
 
 <script src="http://gist.github.com/44727.js"></script>
 
-So it was not only the wrong merb-cache setup. Where is the bug? 
+So it was not only the wrong merb-cache setup. Where is the bug?
 I have two do_sqlite3 (0.9.10.1, 0.9.9). If I set dm_gems_version   = "0.9.9", running rake -T throws this error.
 
 <script src="http://gist.github.com/44734.js"></script>
 
-I even uninstalled version 0.9.10.1 and rake -T error says "already activated data_objects-0.9.10.1". 
+I even uninstalled version 0.9.10.1 and rake -T error says "already activated data_objects-0.9.10.1".
 
 in my Rakefile line #12,
-# Load the basic runtime dependencies; this will include 
+# Load the basic runtime dependencies; this will include
 # any plugins and therefore plugin rake tasks.
 init_env = ENV['MERB_ENV'] || 'rake'
 Merb.load_dependencies(:environment => init_env)
-     
-I googled it and found the answer 
+
+I googled it and found the answer
 Matt Aimonetti says,
 "bundle your app by doing `thor merb:gem:install`  and run your app by
 doing `./bin/merb` "
@@ -128,22 +128,22 @@ a future release.
 
 Move the do_* adapters above dm-core and rebundle your app.
 
-thor merb:gem:install 
+thor merb:gem:install
 </quote>
 
 So I have to fix thor problem. The answer for this is write merb.thor on root directory.
 http://github.com/wycats/merb/tree/master/merb-gen/lib/generators/templates/application/common/merb.thor?raw=true
 
-I fixed thor problem and bundled gems. But "rake db:automigrate" fails. 
+I fixed thor problem and bundled gems. But "rake db:automigrate" fails.
 There was a ticket about this problem.
 http://merb.lighthouseapp.com/projects/7433/tickets/618-rake-dbautomigrate-loads-initrb-twice
-But I have merb 1.0.7.1 not the old version.  
+But I have merb 1.0.7.1 not the old version.
 These are the files that describes my problem. http://gist.github.com/44941
 
 Again, giom helped me. Here is the snippet written by him.
 <script src='http://pastie.org/356279.js'></script>
 
-I referenced here. 
+I referenced here.
 http://blog.evanweaver.com/files/doc/fauna/memcached/files/README.html
 
 $ wget  http://download.tangent.org/libmemcached-0.25.tar.gz
@@ -156,4 +156,4 @@ $ irb
 > require 'rubygems'
 > require 'memcached'
 
-To manage daemons, I installed rufus-scheduler and daemons gem. 
+To manage daemons, I installed rufus-scheduler and daemons gem.
